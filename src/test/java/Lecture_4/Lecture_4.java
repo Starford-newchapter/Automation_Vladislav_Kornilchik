@@ -1,5 +1,6 @@
 package Lecture_4;
 
+import net.bytebuddy.build.Plugin;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -14,7 +15,7 @@ import static java.awt.SystemColor.window;
 public class Lecture_4 {
 
     WebDriver driver = new ChromeDriver();
-    JavascriptExecutor jse = (JavascriptExecutor)driver;
+    JavascriptExecutor jse = (JavascriptExecutor) driver;
 
     @BeforeTest
     public void setUp() {
@@ -24,31 +25,43 @@ public class Lecture_4 {
         driver.findElement(By.cssSelector("center:nth-child(1)>.gNO89b")).click();
     }
 
-    @Test
-    public void checkHelloWord_1() {
+    @Test(priority = 1)
+    public void checkHelloWorldInSearchString() {
+        String helloWord = driver.findElement(By.cssSelector("input.gLFyf")).getAttribute("value");
+        Assert.assertEquals(helloWord, "Привет,мир");
+
+    }
+
+    @Test(priority = 2)
+    public void checkHelloWordInLink_1() {
         String helloWord = driver.findElement(By.cssSelector("div:nth-child(2) > .tF2Cxc > .yuRUbf .LC20lb")).getText();
         Assert.assertTrue(helloWord.contains("Привет, Мир!"));
         jse.executeScript("scroll(0, 600);");
     }
 
-    @Test
-    public void checkHelloWord_2() {
+    @Test(priority = 3)
+    public void checkHelloWordInLink_2() {
         String helloWord = driver.findElement(By.cssSelector(".g:nth-child(4) .LC20lb")).getText();
         Assert.assertTrue(helloWord.contains("Привет, Мир!"));
         jse.executeScript("scroll(0, 250);");
     }
 
-    @Test
-    public void checkHelloWord_3() {
+    @Test(priority = 4)
+    public void checkHelloWordInLink_3() {
         String helloWord = driver.findElement(By.cssSelector(".NJo7tc .LC20lb")).getText();
         Assert.assertTrue(helloWord.contains("Привет, Мир!"));
     }
 
-    @AfterTest
-    public void closeBrowser(){
-        driver.quit();
-    }
+    @Test(priority = 5)
+    public void searchNotFound() {
+        driver.findElement(By.cssSelector("input.gLFyf")).clear();
+        driver.findElement(By.cssSelector("input.gLFyf")).sendKeys("*//*");
+        driver.findElement(By.cssSelector("button.Tg7LZd")).click();
+        String notFound = driver.findElement(By.cssSelector(".card-section p:nth-child(1)")).getText();
+        Assert.assertTrue(notFound.contains("ничего не найдено"));
 
+
+    }
 
 
 }
