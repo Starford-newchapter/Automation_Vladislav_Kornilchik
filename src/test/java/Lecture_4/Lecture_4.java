@@ -20,9 +20,8 @@ public class Lecture_4 {
     @BeforeTest
     public void setUp() {
         driver.get("https://www.google.by/");
-        driver.findElement(By.cssSelector("input.gLFyf")).sendKeys("Привет,мир");
-        driver.findElement(By.cssSelector(".LLD4me")).click();
-        driver.findElement(By.cssSelector("center:nth-child(1)>.gNO89b")).click();
+        driver.findElement(By.xpath("//*[@name='q']")).sendKeys("Привет,мир");
+        driver.findElement(By.cssSelector("center:nth-child(1) .gNO89b")).click();
     }
 
     @Test(priority = 1)
