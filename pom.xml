@@ -5,12 +5,27 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>Automation(Vladislav_Kornilchik)</artifactId>
+    <artifactId>Automation_Vladislav_Kornilchik</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.5</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.1.1</version>
+        </dependency>
+    </dependencies>
+
 
 </project>
