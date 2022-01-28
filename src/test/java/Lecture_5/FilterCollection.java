@@ -1,4 +1,4 @@
-package Lecture_5.FilterCollection;
+package Lecture_5;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FilterColl {
+public class FilterCollection {
 
     @Test
     public void testFilterCollection() {
