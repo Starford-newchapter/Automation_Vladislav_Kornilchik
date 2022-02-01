@@ -14,7 +14,8 @@ import java.util.List;
 
 import static org.openqa.selenium.support.locators.RelativeLocator.with;
 
-public class Task_6 {
+
+public class Relative_Locators {
     WebDriver driver = null;
 
     @BeforeTest
@@ -24,7 +25,7 @@ public class Task_6 {
     }
 
     @Test
-    public void testSauceDemo_MainLocators() {
+    public void testRelativeLocators() {
         driver.get("https://www.saucedemo.com/");
         //WebElements
         WebElement inputUsername = driver.findElement(By.id("user-name"));
@@ -35,19 +36,24 @@ public class Task_6 {
         inputPassword.sendKeys("secret_sauce");
         buttonLogin.click();
 
-        String nameOfProduct = driver.findElement(By.xpath("//div[@class='inventory_list']/div[2]//following::div[3]")).getText();
-        WebElement priceOfProduct = driver.findElement(By.xpath("//div[@class='inventory_list']/div[2]//div[2]//div[@class='inventory_item_price']"));
-        WebElement buttonAddToCard = driver.findElement(with(By.tagName("button")).toRightOf(priceOfProduct));
-        WebElement productCard = driver.findElement(By.className("shopping_cart_container"));
+        WebElement description = driver.findElement(By.xpath("//*[@class='inventory_item'][2]//div[@class='inventory_item_desc']"));
+
+        WebElement nameOfProduct = driver.findElement(with(By.tagName("div")).above(description));
+        WebElement priceOfProduct = driver.findElement(with(By.tagName("div")).below(description));
         List<String> dataOnPage = new ArrayList<String>() {{
-            add(nameOfProduct);
+            add(nameOfProduct.getText());
             add(priceOfProduct.getText());
         }};
+        System.out.println(dataOnPage);
+
+        WebElement buttonAddToCard = driver.findElement(with(By.tagName("button")).toRightOf(priceOfProduct));
+        WebElement productCard = driver.findElement(with(By.tagName("div")).above(By.className("product_sort_container")));
+
 
         buttonAddToCard.click();
         productCard.click();
 
-        WebElement nameOfProductInCard = driver.findElement(By.className("inventory_item_name"));
+        WebElement nameOfProductInCard = driver.findElement(with(By.tagName("div")).above(By.className("inventory_item_desc")));
         WebElement priceOfProductInCard = driver.findElement(By.cssSelector(".inventory_item_price"));
 
         List<String> dataInCard = new ArrayList<String>() {{
@@ -64,5 +70,4 @@ public class Task_6 {
     public void close() {
         driver.quit();
     }
-
 }
