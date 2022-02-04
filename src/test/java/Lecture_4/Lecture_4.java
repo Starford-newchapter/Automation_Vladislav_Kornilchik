@@ -1,16 +1,12 @@
 package Lecture_4;
 
-import net.bytebuddy.build.Plugin;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
-import static java.awt.SystemColor.window;
 
 public class Lecture_4 {
 
