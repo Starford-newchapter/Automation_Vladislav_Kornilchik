@@ -36,19 +36,19 @@ public class Task_6 {
         buttonLogin.click();
 
         String nameOfProduct = driver.findElement(By.xpath("//div[@class='inventory_list']/div[2]//following::div[3]")).getText();
-        WebElement priceOfProduct = driver.findElement(By.xpath("//div[@class='inventory_list']/div[2]//div[2]//div[@class='inventory_item_price']"));
-        WebElement buttonAddToCard = driver.findElement(with(By.tagName("button")).toRightOf(priceOfProduct));
-        WebElement productCard = driver.findElement(By.className("shopping_cart_container"));
-        List<String> dataOnPage = new ArrayList<String>() {{
-            add(nameOfProduct);
-            add(priceOfProduct.getText());
-        }};
-
+        String nameOfProduct2=driver.findElement(By.xpath("//div[@class='inventory_item_img']/following::*[text()='Sauce Labs Backpack']")).getText();
+        String priceOfProduct = driver.findElement(By.cssSelector("[class$=price]")).getText();;
+        WebElement buttonAddToCard = driver.findElement(By.xpath("//button[@class='btn btn_primary btn_small btn_inventory' and @name='add-to-cart-sauce-labs-backpack']"));
         buttonAddToCard.click();
+        WebElement productCard = driver.findElement(By.xpath("//span[@class='shopping_cart_badge']/ancestor::a"));
+        List<String> dataOnPage = new ArrayList<String>() {{
+            add(nameOfProduct2);
+            add(priceOfProduct);
+        }};
         productCard.click();
 
-        WebElement nameOfProductInCard = driver.findElement(By.className("inventory_item_name"));
-        WebElement priceOfProductInCard = driver.findElement(By.cssSelector(".inventory_item_price"));
+        WebElement nameOfProductInCard = driver.findElement(By.partialLinkText("Sauce"));
+        WebElement priceOfProductInCard = driver.findElement(By.cssSelector("[class^=inventory_item_p]"));
 
         List<String> dataInCard = new ArrayList<String>() {{
             add(nameOfProductInCard.getText());
@@ -60,9 +60,6 @@ public class Task_6 {
 
     }
 
-    @AfterTest
-    public void close() {
-        driver.quit();
-    }
+
 
 }
