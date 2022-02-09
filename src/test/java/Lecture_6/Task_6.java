@@ -60,6 +60,11 @@ public class Task_6 {
 
     }
 
+    @AfterTest
+    public void close() {
+        driver.quit();
+    }
+
 
 
 }
