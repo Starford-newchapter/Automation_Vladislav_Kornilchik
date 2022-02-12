@@ -1,28 +1,55 @@
 package BaseObjects;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
+import java.lang.reflect.InvocationTargetException;
+
 import static BaseObjects.DriverCreation.closeDriver;
 import static BaseObjects.DriverCreation.getDriver;
 
-public class BaseTest {
+public abstract class BaseTest {
     protected WebDriver driver;
     protected ITestContext context;
+    private String browserName;
 
     @BeforeTest
     public void preconditions(ITestContext context) {
         this.context = context;
-        driver = getDriver(context.getSuite().getParameter("browser"));
+        this.browserName = context.getSuite().getParameter("browser") == null ? System.getProperty("browser") : context.getSuite().getParameter("browser");
+        this.driver = getDriver(browserName == null ? "CHROME" : browserName);
     }
 
-    @AfterTest
-    public void postconditions(ITestContext context) {
-        this.context = context;
-        closeDriver(context.getSuite().getParameter("browser"));
+    protected <T> T get(Class<T> page) {
+        return get(page,this.driver);
     }
+
+    protected <T> T get(Class<T> page, WebDriver driver) {
+        T instance = null;
+        try {
+            instance = page.getDeclaredConstructor(WebDriver.class).newInstance(driver);
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchElementException | NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+        return instance;
+    }
+
+     @AfterTest
+    public void postconditions() {
+         closeDriver(browserName == null ? "CHROME" : browserName);
+
+
+    }
+
+
+
+
 
 
 }
+
+
+
