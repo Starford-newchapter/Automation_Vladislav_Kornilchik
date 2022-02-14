@@ -3,7 +3,6 @@ package Lecture_9;
 import BaseObjects.BaseTest;
 import PageObject.saucedemo.LoginPage;
 import PageObject.saucedemo.ProductsPage;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -12,21 +11,13 @@ import java.util.List;
 
 public class Authorization extends BaseTest {
 
-
-
-    @BeforeMethod
-    public void precondition() {
-        driver.get(context.getSuite().getParameter("url"));
-    }
-
-
     @Test(dataProvider = "authorization_tests")
     public void checkAuthorization(String username, String password) {
+        driver.get(context.getSuite().getParameter("url"));
         get(LoginPage.class).verifyPage();
-        get(LoginPage.class).authorization(username,password);
-            }
-
-
+        get(LoginPage.class).authorization(username, password);
+        get(ProductsPage.class).verifyPage();
+    }
 
 
     List<String> validUserNames = new ArrayList() {{
@@ -42,10 +33,9 @@ public class Authorization extends BaseTest {
     @DataProvider(name = "authorization_tests")
     private Object[][] getData() {
         return new Object[][]{
-                {validUserNames.get(0), PASSWORD},
-                {validUserNames.get(1), PASSWORD},
-                {validUserNames.get(2), PASSWORD},
-                {validUserNames.get(3),PASSWORD}
+                {validUserNames.get(0), " "},
+                {"sadadsadssda", "23123424"},
+                {validUserNames.get(3), PASSWORD}
 
 
         };

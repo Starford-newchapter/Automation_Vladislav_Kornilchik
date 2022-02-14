@@ -9,29 +9,27 @@ public class Lecture_9 extends BaseTest {
 
     @Test(priority = 1)
     public void addItemInCard() {
-        get(ProductsPage.class).verifyPage();
         get(ProductsPage.class).addItemInCard().verifyCountItems().clickOnCardItems();
-
+        get(CardPage.class).verifyPage();
 
     }
 
 
     @Test(priority = 2)
     public void removeItemsFromCard() {
-        get(CardPage.class).verifyPage();
         get(CardPage.class).removeItem().verifyItemsAfterDelete().clickCheckout();
+        get(CheckoutPage.class).verifyPage();
 
     }
 
     @Test(priority = 3)
     public void checkOutOrder() {
-        get(CheckoutPage.class).verifyPage();
         get(CheckoutPage.class).sendInformation("Vladislav", "Vladislav", "12345");
+        get(ConfirmPage.class).verifyPage();
     }
 
     @Test(priority = 4)
     public void confirmOrder() {
-        get(ConfirmPage.class).verifyPage();
         get(ConfirmPage.class).clickFinishButton();
 
     }
