@@ -18,6 +18,7 @@ public class DriverCreation {
     public static WebDriver getDriver(String drivers) {
         if (driver == null) {
             driver = getInstance(DriverManagerType.valueOf(drivers.toUpperCase(Locale.ROOT))).create();
+            driver.manage().window().maximize();
 
         }
         return driver;
@@ -26,5 +27,7 @@ public class DriverCreation {
     public static void closeDriver(String drivers) {
         getInstance(DriverManagerType.valueOf(drivers.toUpperCase(Locale.ROOT))).quit();
     }
+
+
 }
 
