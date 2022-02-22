@@ -3,6 +3,7 @@ package Lecture_9;
 import BaseObjects.BaseTest;
 import PageObject.saucedemo.LoginPage;
 import PageObject.saucedemo.ProductsPage;
+import io.qameta.allure.*;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -11,7 +12,10 @@ import java.util.List;
 
 public class Authorization extends BaseTest {
 
-    @Test(dataProvider = "authorization_tests")
+    @Test(dataProvider = "authorization_tests", description = "LoginPage")
+    @Step("Authorization")
+    @Attachment(value = "screenshot", type = "src/test/Login.jpg")
+
     public void checkAuthorization(String username, String password) {
         driver.get(context.getSuite().getParameter("url"));
         get(LoginPage.class).verifyPage();
