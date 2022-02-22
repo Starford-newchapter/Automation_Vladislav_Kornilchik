@@ -47,15 +47,19 @@ public class SolveWithDataProvider extends BaseTest {
     private Object[][] objects() {
         return new Object[][]{
                 {0},
+                {1},
                 {2},
-                {3}
+                {3},
+                {4}
         };
     }
 
     @DataProvider(name = "removeItems_tests")
     private Object[][] remove() {
         return new Object[][]{
-                {1}
+                {1},
+                {2},
+
 
         };
     }
