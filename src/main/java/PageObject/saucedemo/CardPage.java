@@ -7,9 +7,14 @@ import org.testng.Assert;
 public class CardPage extends BasePage {
 
     private By title = By.className("title");
-    private By removeButton = By.id("remove-sauce-labs-bike-light");
+
+    private By removeButton(int number) {
+        return By.xpath("(//*[@class='item_pricebar']/button)[" + number + "]");
+    }
+
     private By checkoutButton = By.id("checkout");
     private By removedItem = By.className("removed_cart_item");
+    private By backToShoppingButton = By.id("continue-shopping");
 
 
     @Override
@@ -24,8 +29,13 @@ public class CardPage extends BasePage {
 
     }
 
-    public CardPage removeItem() {
-        driver.findElement(removeButton).click();
+    public CardPage clickOnContinueShopping() {
+        driver.findElement(backToShoppingButton).click();
+        return this;
+    }
+
+    public CardPage removeItem(int number) {
+        driver.findElement(removeButton(number)).click();
         return this;
     }
 

@@ -9,7 +9,7 @@ public class Lecture_9 extends BaseTest {
 
     @Test(priority = 1)
     public void addItemInCard() {
-        get(ProductsPage.class).addItemInCard().verifyCountItems().clickOnCardItems();
+        get(ProductsPage.class).addItemInCard(2).verifyCountItems().clickOnCardItems();
         get(CardPage.class).verifyPage();
 
     }
@@ -17,7 +17,7 @@ public class Lecture_9 extends BaseTest {
 
     @Test(priority = 2)
     public void removeItemsFromCard() {
-        get(CardPage.class).removeItem().verifyItemsAfterDelete().clickCheckout();
+        get(CardPage.class).removeItem(1).verifyItemsAfterDelete().clickCheckout();
         get(CheckoutPage.class).verifyPage();
 
     }

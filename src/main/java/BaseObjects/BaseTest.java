@@ -8,8 +8,7 @@ import org.testng.annotations.BeforeTest;
 
 import java.lang.reflect.InvocationTargetException;
 
-import static BaseObjects.DriverCreation.closeDriver;
-import static BaseObjects.DriverCreation.getDriver;
+import static BaseObjects.DriverCreation.*;
 
 public abstract class BaseTest {
     protected WebDriver driver;
@@ -20,11 +19,12 @@ public abstract class BaseTest {
     public void preconditions(ITestContext context) {
         this.context = context;
         this.browserName = context.getSuite().getParameter("browser") == null ? System.getProperty("browser") : context.getSuite().getParameter("browser");
-        this.driver = getDriver(browserName == null ? "CHROME" : browserName);
+        createDriver(browserName == null ? "chrome" : browserName);
+        this.driver = getDriver();
     }
 
     protected <T> T get(Class<T> page) {
-        return get(page,this.driver);
+        return get(page, this.driver);
     }
 
     protected <T> T get(Class<T> page, WebDriver driver) {
@@ -37,16 +37,12 @@ public abstract class BaseTest {
         return instance;
     }
 
-     @AfterTest
+    @AfterTest
     public void postconditions() {
-         closeDriver(browserName == null ? "CHROME" : browserName);
+        closeDriver(browserName == null ? "CHROME" : browserName);
 
 
     }
-
-
-
-
 
 
 }
