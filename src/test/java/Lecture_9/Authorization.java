@@ -14,7 +14,6 @@ public class Authorization extends BaseTest {
 
     @Test(dataProvider = "authorization_tests", description = "LoginPage")
     @Step("Authorization")
-    @Attachment(value = "screenshot", type = "src/test/Login.jpg")
 
     public void checkAuthorization(String username, String password) {
         driver.get(context.getSuite().getParameter("url"));
