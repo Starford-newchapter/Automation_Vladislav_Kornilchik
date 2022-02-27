@@ -32,7 +32,6 @@ public class SolveWithDataProvider extends BaseTest {
         get(CardPage.class).removeItem(number).verifyItemsAfterDelete();
     }
 
-
     List<String> validUserNames = new ArrayList() {{
         add("standard_user");
         add("problem_user");
@@ -59,11 +58,8 @@ public class SolveWithDataProvider extends BaseTest {
         return new Object[][]{
                 {1},
                 {2},
-
-
         };
     }
-
 
     @DataProvider(name = "authorization_tests")
     private Object[][] getData() {
@@ -71,8 +67,6 @@ public class SolveWithDataProvider extends BaseTest {
                 {validUserNames.get(0), " "},
                 {"sadadsadssda", "23123424"},
                 {validUserNames.get(3), PASSWORD}
-
-
         };
     }
 

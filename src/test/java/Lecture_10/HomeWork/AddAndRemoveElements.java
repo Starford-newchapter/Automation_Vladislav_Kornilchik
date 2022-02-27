@@ -19,7 +19,5 @@ public class AddAndRemoveElements extends BaseTest {
         get(ProductsPage.class).clickOnCardItems();
         get(CardPage.class).verifyPage();
         get(CardPage.class).removeItem(1).verifyItemsAfterDelete();
-
     }
-
 }

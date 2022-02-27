@@ -12,25 +12,21 @@ public class Lecure_10 {
     @BeforeClass(groups = "Smoke")
     public void beforeClass() {
         System.out.println("BeforeClass");
-
     }
 
     @BeforeTest(groups = "Smoke")
     public void beforeTest() {
         System.out.println("BeforeTest");
-
     }
 
     @BeforeGroups(groups = {"Smoke"})
     public void beforeGroup() {
         System.out.println("BeforeGroup");
-
     }
 
     @BeforeMethod(groups = "Smoke")
     public void beforeMethod() {
         System.out.println("BeforeMethod");
-
     }
 
 
@@ -47,25 +43,21 @@ public class Lecure_10 {
     @AfterSuite(groups = "Smoke")
     public void AfterClass() {
         System.out.println("AfterClass");
-
     }
 
     @AfterTest(groups = "Smoke")
     public void AfterTest() {
         System.out.println("AfterTest");
-
     }
 
     @AfterGroups(groups = {"Smoke"})
     public void AfterGroup() {
         System.out.println("AfterGroup");
-
     }
 
     @AfterMethod(groups = "Smoke")
     public void AfterMethod() {
         System.out.println("AfterMethod");
-
     }
 
 }

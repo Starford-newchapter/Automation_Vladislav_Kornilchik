@@ -19,13 +19,11 @@ public class Authorization extends BaseTest {
         get(ProductsPage.class).verifyPage();
     }
 
-
     @Test(priority = 1)
     public void authorizationWithEmptyPassword() {
         get(LoginPage.class).verifyPage();
         get(LoginPage.class).authorization("standard_user", " ");
         get(ProductsPage.class).verifyPage();
-
     }
 
     @Test(priority = 2)
@@ -33,8 +31,6 @@ public class Authorization extends BaseTest {
         get(LoginPage.class).verifyPage();
         get(LoginPage.class).authorization("standard_user", "sadasdasd");
         get(ProductsPage.class).verifyPage();
-
-
     }
 
     @Test(priority = 3)
@@ -42,7 +38,5 @@ public class Authorization extends BaseTest {
         get(LoginPage.class).verifyPage();
         get(LoginPage.class).authorization("qwerts", "secret_sauced");
         get(ProductsPage.class).verifyPage();
-
-
     }
 }

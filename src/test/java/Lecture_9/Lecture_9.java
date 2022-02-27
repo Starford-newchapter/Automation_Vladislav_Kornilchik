@@ -11,15 +11,12 @@ public class Lecture_9 extends BaseTest {
     public void addItemInCard() {
         get(ProductsPage.class).addItemInCard(2).verifyCountItems().clickOnCardItems();
         get(CardPage.class).verifyPage();
-
     }
-
 
     @Test(priority = 2)
     public void removeItemsFromCard() {
         get(CardPage.class).removeItem(1).verifyItemsAfterDelete().clickCheckout();
         get(CheckoutPage.class).verifyPage();
-
     }
 
     @Test(priority = 3)
@@ -31,7 +28,6 @@ public class Lecture_9 extends BaseTest {
     @Test(priority = 4)
     public void confirmOrder() {
         get(ConfirmPage.class).clickFinishButton();
-
     }
 
     @Test(priority = 5)
