@@ -1,15 +1,19 @@
 package BaseObjects;
 
+import TestNgUtills.InvokedMethodsListener;
+import TestNgUtills.Listener;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 
 import java.lang.reflect.InvocationTargetException;
 
 import static BaseObjects.DriverCreation.*;
 
+@Listeners({Listener.class, InvokedMethodsListener.class})
 public abstract class BaseTest {
     protected WebDriver driver;
     protected ITestContext context;

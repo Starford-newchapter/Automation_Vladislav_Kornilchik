@@ -8,7 +8,7 @@
             <class name="Lecture_10.HomeWork.Authorization"/>
         </classes>
     </test>
-    <test name="AddAndRe,oveItems">
+    <test name="AddAndRemoveItems">
         <classes>
             <class name="Lecture_10.HomeWork.AddAndRemoveElements"/>
         </classes>
