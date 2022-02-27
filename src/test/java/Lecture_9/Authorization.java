@@ -19,7 +19,6 @@ public class Authorization extends BaseTest {
         get(ProductsPage.class).verifyPage();
     }
 
-
     List<String> validUserNames = new ArrayList() {{
         add("standard_user");
         add("problem_user");
@@ -36,8 +35,6 @@ public class Authorization extends BaseTest {
                 {validUserNames.get(0), " "},
                 {"sadadsadssda", "23123424"},
                 {validUserNames.get(3), PASSWORD}
-
-
         };
     }
 

@@ -29,7 +29,6 @@ public class Lecure_10 {
         System.out.println("BeforeMethod");
     }
 
-
     @Test(groups = {"Smoke"})
     public void test1() {
         System.out.println("Test1");
