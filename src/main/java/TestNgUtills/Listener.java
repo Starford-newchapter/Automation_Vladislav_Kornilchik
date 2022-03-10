@@ -5,20 +5,27 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import static BaseObjects.DriverCreation.createDriver;
+
+
 public class Listener implements ITestListener {
+    private static String browserName;
+    private static ITestContext context;
 
     @Override
-    public void onTestFailure(ITestResult result) {
-        byte[] screen=((TakesScreenshot) DriverCreation.getDriver()).getScreenshotAs(OutputType.BYTES);
-        saveScreenshot(screen);
-
+    public void onStart(ITestContext context) {
+        this.context = context;
+        this.browserName = context.getSuite().getParameter("browser") == null ? System.getProperty("browser") : context.getSuite().getParameter("browser");
+        createDriver(browserName == null ? "chrome" : browserName);
     }
 
-    @Attachment(value = "Screenshot",type="image/png")
-    private byte[] saveScreenshot(byte[] bytes){
-        return  bytes;
+    public static ITestContext getContext() {
+        return context;
     }
 }
+
+

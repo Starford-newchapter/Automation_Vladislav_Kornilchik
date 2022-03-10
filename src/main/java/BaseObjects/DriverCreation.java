@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
+import java.time.Duration;
 import java.util.Locale;
 
 import static io.github.bonigarcia.wdm.WebDriverManager.*;
@@ -16,7 +17,10 @@ public class DriverCreation {
 
     public static void createDriver(String drivers) {
         if (driver.get() == null) {
-            driver.set(getInstance(DriverManagerType.valueOf(drivers.toUpperCase(Locale.ROOT))).create());
+            WebDriver webDriver = getInstance(DriverManagerType.valueOf(drivers.toUpperCase(Locale.ROOT))).create();
+            webDriver.manage().window().maximize();
+            webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+            driver.set(webDriver);
         }
     }
 
@@ -24,8 +28,12 @@ public class DriverCreation {
         return driver.get();
     }
 
-    public static void closeDriver(String drivers) {
-        getInstance(DriverManagerType.valueOf(drivers.toUpperCase(Locale.ROOT))).quit();
+    public static void closeDriver() {
+        if (driver.get() != null) {
+            driver.get().close();
+            driver.get().quit();
+            driver.remove();
+        }
     }
 }
 
