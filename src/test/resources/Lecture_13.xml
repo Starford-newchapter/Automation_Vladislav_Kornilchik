@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Lecture_13">
-    <parameter name="browser" value="CHROME"></parameter>
-    <parameter name="url" value="https://www.saucedemo.com/"></parameter>
-    <test name="Authorization">
+<suite name="Lecture_12" parallel="tests">
+    <parameter name="browser" value="CHROME"/>
+    <parameter name="url" value="http://the-internet.herokuapp.com/"/>
+
+    <test name="iFrames" enabled="true">
+        <parameter name="linkName" value="FRAMES"/>
         <classes>
-            <class name="Lecture_10.HomeWork.Authorization"/>
+            <class name="HomeWork_12.HomePage_Test"/>
+            <class name="HomeWork_13.iFrames"/>
+        </classes>
+    </test>
+
+    <test name="JsScriptAlerts">
+        <parameter name="linkName" value="JAVASCRIPT_ALERTS"/>
+        <classes>
+            <class name="HomeWork_12.HomePage_Test"/>
+            <class name="HomeWork_13.JavaScriptAlertTest"/>
         </classes>
     </test>
 </suite>

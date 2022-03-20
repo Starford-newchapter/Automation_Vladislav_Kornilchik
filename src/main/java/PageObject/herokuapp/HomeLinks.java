@@ -6,7 +6,8 @@ public enum HomeLinks {
     FILE_UPLOAD("File Upload"),
     FRAMES("Frames"),
     DYNAMIC_CONTROLS("Dynamic Controls"),
-    DRAG_AND_DROP("Drag and Drop");
+    DRAG_AND_DROP("Drag and Drop"),
+    JAVASCRIPT_ALERTS("JavaScript Alerts");
 
     String link;
 
