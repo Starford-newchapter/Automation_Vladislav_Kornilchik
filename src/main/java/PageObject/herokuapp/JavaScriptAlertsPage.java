@@ -14,12 +14,13 @@ public class JavaScriptAlertsPage extends BasePage {
     private String textOnJsPrompt = "Hello prompt";
 
     private JavaScriptAlertsPage verifyResult(String text) {
-        Assert.assertEquals(driver.findElement(result).getText(), text);
+        String resultText = js.executeScript("return arguments[0].innerHTML;", driver.findElement(result)).toString();
+        Assert.assertEquals(resultText, text);
         return this;
     }
 
     private Alert verifyAlertText(String text) {
-        alert=driver.switchTo().alert();
+        alert = driver.switchTo().alert();
         Assert.assertEquals(alert.getText(), text);
         return alert;
     }
@@ -42,12 +43,13 @@ public class JavaScriptAlertsPage extends BasePage {
         driver.findElement(buttonJsPrompt).click();
         verifyAlertText("I am a JS prompt").sendKeys(textOnJsPrompt);
         alert.accept();
-        verifyResult("You entered: "+textOnJsPrompt);
+        verifyResult("You entered: " + textOnJsPrompt);
         return this;
     }
 
     @Override
     public void verifyPage() {
-        Assert.assertEquals(driver.findElement(title).getText(), "JavaScript Alerts");
+        String verifyText = js.executeScript("return arguments[0].innerHTML;", driver.findElement(title)).toString();
+        Assert.assertEquals(verifyText, "JavaScript Alerts");
     }
 }

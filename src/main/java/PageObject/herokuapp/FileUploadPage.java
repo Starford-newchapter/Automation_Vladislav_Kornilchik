@@ -10,11 +10,11 @@ public class FileUploadPage extends BasePage {
     private By chooseFileButton = By.id("file-upload");
     private By uploadButton = By.id("file-submit");
     private By nameFile = By.id("uploaded-files");
-    private String pathToFile=System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator + "UploadFiles" + File.separator;
-    private String fileName="lex.jpg";
+    private String pathToFile = System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator + "UploadFiles" + File.separator;
+    private String fileName = "lex.jpg";
 
     public FileUploadPage chooseFile() {
-        driver.findElement(chooseFileButton).sendKeys(pathToFile+fileName);
+        driver.findElement(chooseFileButton).sendKeys(pathToFile + fileName);
         return this;
     }
 
@@ -26,7 +26,7 @@ public class FileUploadPage extends BasePage {
 
     public FileUploadPage uploadFile() {
         chooseFile();
-        driver.findElement(uploadButton).click();
+        js.executeScript("arguments[0].click();",driver.findElement(uploadButton));
         verificationUpload();
         return this;
     }

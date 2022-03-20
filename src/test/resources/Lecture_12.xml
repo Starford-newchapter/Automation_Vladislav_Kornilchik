@@ -32,7 +32,7 @@
         <parameter name="linkName" value="FRAMES"/>
         <classes>
             <class name="HomeWork_12.HomePage_Test"/>
-            <class name="HomeWork_12.iFrames"/>
+            <class name="HomeWork_13.iFrames"/>
         </classes>
     </test>
 
