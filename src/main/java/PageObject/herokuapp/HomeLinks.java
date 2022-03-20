@@ -5,7 +5,8 @@ public enum HomeLinks {
     FILE_DOWNLOAD("File Download"),
     FILE_UPLOAD("File Upload"),
     FRAMES("Frames"),
-    DYNAMIC_CONTROLS("Dynamic Controls");
+    DYNAMIC_CONTROLS("Dynamic Controls"),
+    DRAG_AND_DROP("Drag and Drop");
 
     String link;
 
