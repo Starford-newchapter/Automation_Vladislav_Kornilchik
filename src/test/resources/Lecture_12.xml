@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Lecture_12" parallel="tests">
+    <parameter name="browser" value="CHROME"/>
+    <parameter name="url" value="http://the-internet.herokuapp.com/"/>
+
+    <test name="Context Menu" enabled="false">
+        <parameter name="linkName" value="CONTEXT_MENU"/>
+        <classes>
+            <class name="HomeWork_12.HomePage_Test"/>
+            <class name="HomeWork_12.TestContextMenu"/>
+        </classes>
+    </test>
+
+    <test name="Dynamic Controls" enabled="false">
+    <parameter name="linkName" value="DYNAMIC_CONTROLS"/>
+    <classes>
+        <class name="HomeWork_12.HomePage_Test"/>
+        <class name="HomeWork_12.DynamicControlsTest"/>
+    </classes>
+</test>
+
+    <test name="File Upload" enabled="true">
+        <parameter name="linkName" value="FILE_UPLOAD"/>
+        <classes>
+            <class name="HomeWork_12.HomePage_Test"/>
+            <class name="HomeWork_12.FileUploadTest"/>
+        </classes>
+    </test>
+
+    <test name="iFrames" enabled="false">
+        <parameter name="linkName" value="FRAMES"/>
+        <classes>
+            <class name="HomeWork_12.HomePage_Test"/>
+            <class name="HomeWork_12.iFrames"/>
+        </classes>
+    </test>
+
+    <test name="DragAndDrops" enabled="false">
+        <parameter name="linkName" value="DRAG_AND_DROP"/>
+        <classes>
+            <class name="HomeWork_12.HomePage_Test"/>
+            <class name="HomeWork_12.DragAndDropTest"/>
+        </classes>
+    </test>
+
+</suite>
