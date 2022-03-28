@@ -16,12 +16,14 @@ public class iFramePage extends BasePage {
 
     public iFramePage checkTextOnIframe() {
         driver.switchTo().frame(driver.findElement(iFrame));
-        Assert.assertEquals(driver.findElement(textAreaIniFrame).getText(), "Your content goes here.");
+        String textOnFrame = js.executeScript("return arguments[0].innerHTML;", driver.findElement(By.tagName("p"))).toString();
+        Assert.assertEquals(textOnFrame, "Your content goes here.");
         return this;
     }
 
     @Override
     public void verifyPage() {
-        Assert.assertEquals(driver.findElement(title).getText(), "An iFrame containing the TinyMCE WYSIWYG Editor");
+        String verifyText = js.executeScript("return arguments[0].innerHTML;", driver.findElement(title)).toString();
+        Assert.assertEquals(verifyText, "An iFrame containing the TinyMCE WYSIWYG Editor");
     }
 }
