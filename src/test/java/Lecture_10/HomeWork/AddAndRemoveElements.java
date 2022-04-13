@@ -13,7 +13,7 @@ public class AddAndRemoveElements extends BaseTest {
     @Test(priority = 1, invocationCount = 3)
     @Description("Add elements in card")
     public void addElements() {
-        get(ProductsPage.class).addItemInCard(i).verifyCountItems();
+        get(ProductsPage.class).addItemInCard(2);
         i++;
     }
 

@@ -28,7 +28,7 @@ public abstract class BaseTest {
     protected <T> T get(Class<T> page) {
         T instance = null;
         try {
-            instance = page.getDeclaredConstructor().newInstance();
+            instance = page.getDeclaredConstructor(WebDriver.class).newInstance(driver);
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             e.printStackTrace();
         }
