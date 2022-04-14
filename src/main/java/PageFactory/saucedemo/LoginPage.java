@@ -37,7 +37,6 @@ public class LoginPage extends BasePage {
         return  this;
     }
 
-
     public LoginPage() {
         PageFactory.initElements(super.driver, this);
     }
@@ -49,11 +48,6 @@ public class LoginPage extends BasePage {
     public String getExceptionTxt() {
         return errorMessage.getText();
     }
-
-
-
-
-
 
     @Override
     public void verifyPage() {

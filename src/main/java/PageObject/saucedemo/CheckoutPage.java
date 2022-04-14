@@ -39,8 +39,8 @@ public class CheckoutPage extends BasePage {
         return this;
     }
 
-    public void sendInformation(String firstName, String lastName, String zipCode) {
-        sendFirstName(firstName).sendLastName(lastName).sendZipCode(zipCode).clickContinueButton();
+    public void sendInformation(CheckOut checkOut) {
+        sendFirstName(checkOut.getFirstName()).sendLastName(checkOut.getLastName()).sendZipCode(checkOut.getZipCode()).clickContinueButton();
     }
 
     public CheckoutPage(WebDriver driver) {

@@ -2,13 +2,10 @@ package Entinty;
 
 public class CheckOut {
     private String firstName;
-    private  String lastName;
-    private  String zipCode;
+    private String lastName;
+    private String zipCode;
 
-    public CheckOut(String firstName, String lastName, String zipCode) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.zipCode = zipCode;
+    public CheckOut() {
     }
 
     public String getFirstName() {
