@@ -16,8 +16,8 @@ import static BaseObjects.DriverCreation.*;
 @Listeners({Listener.class, InvokedMethodsListener.class})
 
 public abstract class BaseTest {
-    protected   static WebDriver driver;
-    protected  ITestContext context;
+    protected  WebDriver driver;
+    protected ITestContext context;
 
     @BeforeTest
     public void setUp(ITestContext context) {
@@ -28,8 +28,14 @@ public abstract class BaseTest {
     protected <T> T get(Class<T> page) {
         T instance = null;
         try {
-            instance = page.getDeclaredConstructor().newInstance();
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            int constructorParameterCount = page.getConstructors()[0].getParameterCount();
+            if (constructorParameterCount > 0) {
+                instance = page.getDeclaredConstructor(WebDriver.class).newInstance(driver);
+            } else {
+                instance = page.getDeclaredConstructor().newInstance();
+            }
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
+                NoSuchMethodException e) {
             e.printStackTrace();
         }
         return instance;

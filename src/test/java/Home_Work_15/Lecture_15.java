@@ -14,15 +14,15 @@ public class Lecture_15 extends BaseTest {
         driver.get(context.getSuite().getParameter("url"));
     }
 
-    @Test(priority = 1, dataProvider = "authorization_tests")
-    public void authorization(User user) {
+    @Test(priority = 1)
+    public void authorization() {
         get(LoginPage.class).verifyPage();
-        get(LoginPage.class).authorization(user);
+        get(LoginPage.class).authorization(new User.Builder().withLogin("standard_user").withPassword("secret_sauce").build());
     }
 
     @Test(priority = 2)
     public void addItemInCard() {
-        get(ProductsPage.class).addItemInCard(2).verifyCountItems().clickOnCardItems();
+        get(ProductsPage.class).addItemInCard(1).verifyCountItems().clickOnCardItems();
         get(CardPage.class).verifyPage();
     }
 
@@ -50,16 +50,6 @@ public class Lecture_15 extends BaseTest {
     @Test(priority = 6)
     public void completeInformation() {
         get(CompletePage.class).verifyPage();
-    }
-
-
-    @DataProvider(name = "authorization_tests")
-    private Object[][] getData() {
-        return new Object[][]{
-                {new User(" ", "12345")},
-                {new User.Builder().withLogin("wqeqweqe").withPassword(" ").build()},
-                {new User.Builder().withLogin("standard_user").withPassword("secret_sauce").build()}
-        };
     }
 
 }
