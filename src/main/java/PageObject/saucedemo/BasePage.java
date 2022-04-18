@@ -1,6 +1,8 @@
 package PageObject.saucedemo;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public abstract class BasePage {
     protected WebDriver driver;
@@ -9,7 +11,5 @@ public abstract class BasePage {
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-
-
     }
 }
