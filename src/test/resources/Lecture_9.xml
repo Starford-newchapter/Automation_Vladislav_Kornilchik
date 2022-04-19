@@ -6,9 +6,11 @@
     <test name="Check_Authorization">
         <classes>
             <class name="Lecture_9.Authorization"/>
+            <class name="Lecture_9.Lecture_9"/>
         </classes>
     </test>
-    <test name="Lecture_9">
+
+    <test name="Lecture_9" enabled="false">
         <classes>
             <class name="Lecture_9.Lecture_9"/>
         </classes>
