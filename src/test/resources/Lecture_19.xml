@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Lecture_19 Sql">
+    <test name="TestSqlQuery">
+        <classes>
+            <class name="Home_Work_19_MySql.Lecture_19"></class>
+        </classes>
+    </test>
+</suite>
