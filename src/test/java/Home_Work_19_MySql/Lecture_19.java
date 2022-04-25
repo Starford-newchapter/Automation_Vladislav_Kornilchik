@@ -1,5 +1,6 @@
 package Home_Work_19_MySql;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -31,52 +32,52 @@ public class Lecture_19 {
         }
     }
 
-    @Test(priority = 1)
+    @Test(priority = 1,enabled = true)
     public void insert_test_1() throws Exception {
-        System.out.println(insert("INSERT INTO VladCars (Id, Model, Color, Price, Count)\n" +
-                "VALUES (5, 'Opel', 'Brown', '2000', '700');"));
-        System.out.println(select("SELECT * FROM testqa11.VladCars;"));
+     Assert.assertEquals(insert("INSERT INTO VladCars (Id, Model, Color, Price, Count)\n" +
+                "VALUES (1, 'Opel', 'Brown', '2000', '700');"),1);
+     Assert.assertEquals((select("SELECT * FROM testqa11.VladCars;").size()),5);
+     Assert.assertEquals((select("SELECT * FROM testqa11.VladCars;").get(0).get(1)),"Opel");
     }
 
-    @Test(priority = 2)
+    @Test(priority = 2,enabled = true)
     public void insert_test_2() throws Exception {
-        System.out.println(insert("INSERT INTO VladCars (Id, Model, Color, Price, Count)\n" +
-                "VALUES (6, 'Volvo', 'White', '7000', '900');"));
-        System.out.println(select("SELECT * FROM testqa11.VladCars;"));
+        Assert.assertEquals(insert("INSERT INTO VladCars (Id, Model, Color, Price, Count)\n" +
+                "VALUES (6, 'Matiz', 'Black', '600', '900');"),1);
+       Assert.assertEquals(select("SELECT * FROM testqa11.VladCars;").size(),6);
+       Assert.assertEquals(select("SELECT * FROM testqa11.VladCars;").get(5).get(1),"Matiz");
     }
 
-    @Test(priority = 3)
+    @Test(priority = 3,enabled = true)
     public void  select_test_1() throws Exception {
-        System.out.println(select("SELECT Model FROM testqa11.VladCars WHERE Count<100;"));
+        Assert.assertEquals(select("SELECT Model FROM testqa11.VladCars WHERE Count<500;").size(),2);
     }
 
-    @Test(priority = 4)
+    @Test(priority = 4,enabled = true)
     public void  select_test_2() throws Exception {
-        System.out.println(select("SELECT Model FROM testqa11.VladCars WHERE Price<=5000;"));
+        Assert.assertEquals(select("SELECT Model FROM testqa11.VladCars WHERE Price<=1000;").size(),3);
     }
 
-    @Test(priority = 5)
+    @Test(priority = 5,enabled = true)
     public void  update_test_1() throws Exception {
-        System.out.println(update("UPDATE testqa11.VladCars SET Count=30 WHERE Color='White';"));
-        System.out.println(select("SELECT * FROM testqa11.VladCars;"));
+        Assert.assertEquals(update("UPDATE testqa11.VladCars SET Count=40 WHERE Color='White';"),2);
     }
 
-    @Test(priority = 6)
+    @Test(priority = 6,enabled = true)
     public void  update_test_2() throws Exception {
-        System.out.println(update("UPDATE testqa11.VladCars SET Price=8000 WHERE Count<100;"));
-        System.out.println(select("SELECT * FROM testqa11.VladCars;"));
+       Assert.assertEquals(update("UPDATE testqa11.VladCars SET Price=8000 WHERE Count<50;"),2);
     }
 
-    @Test(priority = 7)
+    @Test(priority = 7,enabled = true)
     public void  delete_test_1() throws Exception {
-        System.out.println(delete("DELETE FROM  testqa11.VladCars WHERE Model='BMW';"));
-        System.out.println(select("SELECT * FROM testqa11.VladCars;"));
+        Assert.assertEquals(delete("DELETE FROM  testqa11.VladCars WHERE Id=1;"),1);
+        Assert.assertEquals(select("SELECT * FROM testqa11.VladCars;").size(),5);
     }
 
-    @Test(priority = 8)
+    @Test(priority = 8,enabled = true)
     public void  delete_test_2() throws Exception {
-        System.out.println(delete("DELETE FROM  testqa11.VladCars WHERE Count<30;"));
-        System.out.println(select("SELECT * FROM testqa11.VladCars;"));
+        Assert.assertEquals(delete("DELETE FROM  testqa11.VladCars WHERE Id=6;"),1);
+        Assert.assertEquals(select("SELECT * FROM testqa11.VladCars;").size(),4);
     }
 
 
