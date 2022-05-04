@@ -1,6 +1,7 @@
 package Lecture_9;
 
 import BaseObjects.BaseTest;
+import Entinty.CheckOut;
 import PageObject.saucedemo.*;
 import org.testng.annotations.Test;
 
@@ -21,7 +22,8 @@ public class Lecture_9 extends BaseTest {
 
     @Test(priority = 3)
     public void checkOutOrder() {
-        get(CheckoutPage.class).sendInformation("Vladislav", "Vladislav", "12345");
+        CheckOut checkOut=new CheckOut();
+        get(CheckoutPage.class).sendInformation(checkOut);
         get(ConfirmPage.class).verifyPage();
     }
 
@@ -35,6 +37,8 @@ public class Lecture_9 extends BaseTest {
         get(CompletePage.class).verifyPage();
     }
 }
+
+
 
 
 

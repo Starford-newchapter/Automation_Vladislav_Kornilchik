@@ -1,6 +1,7 @@
 package Lecture_9;
 
 import BaseObjects.BaseTest;
+import Entinty.User;
 import PageObject.saucedemo.LoginPage;
 import PageObject.saucedemo.ProductsPage;
 import org.testng.annotations.DataProvider;
@@ -11,11 +12,11 @@ import java.util.List;
 
 public class Authorization extends BaseTest {
 
-    @Test(dataProvider = "authorization_tests")
-    public void checkAuthorization(String username, String password) {
+    @Test
+    public void checkAuthorization() {
         driver.get(context.getSuite().getParameter("url"));
         get(LoginPage.class).verifyPage();
-        get(LoginPage.class).authorization(username, password);
+        get(LoginPage.class).authorization(validUserNames.get(0), PASSWORD);
         get(ProductsPage.class).verifyPage();
     }
 
@@ -39,5 +40,3 @@ public class Authorization extends BaseTest {
     }
 
 }
-
-

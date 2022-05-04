@@ -21,8 +21,8 @@ public class SolveWithDataProvider extends BaseTest {
     }
 
     @Test(priority = 2, dataProvider = "addItems_tests")
-    public void addItems(int number) {
-        get(ProductsPage.class).addItemInCard(number).verifyCountItems();
+    public void addItems() {
+        get(ProductsPage.class).addItemInCard(2);
     }
 
     @Test(priority = 3, dataProvider = "removeItems_tests")
